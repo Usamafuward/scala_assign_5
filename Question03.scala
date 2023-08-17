@@ -1,20 +1,25 @@
-object Q3 {
-  def main(args: Array[String]): Unit = {
-    val inputList = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    val outputList = filterPrime(inputList)
-    println(outputList)
+object StringFormatting {
+  def toUpper(input: String): String = {
+    input.toUpperCase()
   }
 
-  def filterPrime(inputList: List[Int]): List[Int] = {
-    def isPrime(num: Int): Boolean = {
-      if (num <= 1) false
-      else if (num <= 3) true
-      else {
-        val sqrtNum = math.sqrt(num).toInt
-        !(2 to sqrtNum).exists(num % _ == 0)
-      }
-    }
+  def toLower(input: String): String = {
+    input.toLowerCase()
+  }
 
-    inputList.filter(isPrime)
+  def formatNames(name: String, formatFunction: String => String): String = {
+    formatFunction(name)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val names = List("Benny", "Niroshan", "Saman", "Kumara")
+
+    for (name <- names) {
+      val upperCaseName = formatNames(name, toUpper)
+      val lowerCaseName = formatNames(name, toLower)
+      println(upperCaseName)
+      println(lowerCaseName)
+      println()
+    }
   }
 }

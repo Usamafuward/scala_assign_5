@@ -1,18 +1,20 @@
-import scala.io.StdIn
+object InterestCalculator 
+{
+  def calculateInterest(depositAmount: Double): Double = 
+  {
+    val interestRate = 
+      if (depositAmount <= 20000) 0.02
+      else if (depositAmount <= 200000) 0.04
+      else if (depositAmount <= 2000000) 0.035
+      else 0.065
 
-object Q1 {
-  def main(args: Array[String]): Unit = {
-    print("Enter the list of integers separated by commas: ")
-    val InputString = StdIn.readLine()
-    val InputList = InputString.split(",").map(_.trim.toInt).toList
-
-    val Output = filterEvenNumbers(InputList)
-    println("\n"+Output)
-
+    val interest = depositAmount * interestRate
+    interest
   }
-
-  def filterEvenNumbers(numbers:List[Int]):List[Int] = {
-    numbers.filter(num => num%2 == 0)
+  def main(args: Array[String]): Unit = 
+  {
+    val depositAmount = 250000 
+    val interest = calculateInterest(depositAmount)
+    println(s"The interest earned on Rs. $depositAmount deposit is Rs. $interest")
   }
-
 }

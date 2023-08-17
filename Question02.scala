@@ -1,18 +1,17 @@
-import scala.io.StdIn
-
-object Q2 {
+object PatternMatchingExample {
   def main(args: Array[String]): Unit = {
-    print("Enter the list of integers separated by commas: ")
-    val InputString = StdIn.readLine()
-    val InputList = InputString.split(",").map(_.trim.toInt).toList
+    if (args.length != 1) {
+      println("Please provide a single integer input.")
+    } else {
+      val input = args(0).toInt
 
-    val Output = calculateSquare(InputList)
-    println("\n" + Output)
+      val result = input match {
+        case n if n <= 0       => "Negative/Zero input"
+        case n if n % 2 == 0   => "Even number is given"
+        case n if n % 2 != 0   => "Odd number is given"
+      }
 
+      println(result)
+    }
   }
-
-  def calculateSquare(numbers: List[Int]): List[Int] = {
-    numbers.map(num => num*num)
-  }
-
 }
